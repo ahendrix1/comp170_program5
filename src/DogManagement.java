@@ -23,10 +23,11 @@ public class DogManagement {
     // DECLARING SCANNER OBJECT
     static Scanner scn = new Scanner(System.in);
 
-    // Global "what index are we acting on" ctr
+    // Global how many dog counter
     static int dogDex = 0;
 
     public static void main(String[] args) throws Exception {
+        newDog();
 
     }
 
@@ -56,10 +57,40 @@ public class DogManagement {
 
     public static void newDog() {
         int i = 0;
-        while (i < 4) {
+        int id = 0;
+        String n = "null";
+        Double w = 0.0;
+        int a = 0;
 
+        while (i < 5) {
+            switch (i) {
+                case 0:
+                    System.out.println("Please input id: ");
+                    id = scn.nextInt();
+                    break;
+                case 1:
+                    System.out.println("Please input name: ");
+                    n = scn.next();
+                    break;
+                case 2:
+                    System.out.println("Please input weight: ");
+                    w = scn.nextDouble();
+                    break;
+                case 3:
+                    System.out.println("Please input age: ");
+                    a = scn.nextInt();
+                    break;
+
+                default:
+                    ids[dogDex] = id;
+                    names[dogDex] = n;
+                    weights[dogDex] = w;
+                    ages[dogDex] = a;
+                    break;
+            }
+            i++;
         }
-
+        dogDex++;
     }
 
     public static int getDog(int id) {
@@ -68,7 +99,11 @@ public class DogManagement {
 
     }
 
-    public static int editDog(int id) {
+    public static void printDog(int index) {
+
+    }
+
+    public static int editDog(int index) {
 
         return 0;
 
