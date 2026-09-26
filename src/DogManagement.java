@@ -43,6 +43,9 @@ public class DogManagement {
                 case 4:
                     session = false;
                     break;
+                case 5:
+                    humanize();
+                    break;
 
                 default:
                     System.out.println("Bad option.");
@@ -68,6 +71,7 @@ public class DogManagement {
         System.out.println("\t2) Display dog record");
         System.out.println("\t3) Update dog record");
         System.out.println("\t4) Exit Program");
+        System.out.println("\t5) Print human ages");
 
         System.out.print("Enter selection here --> ");
         // INPUT
@@ -182,6 +186,14 @@ public class DogManagement {
         }
 
         printDog(i);
+    }
+
+    public static void humanize() {
+        int humanAge;
+        for (int i = 0; i < dogDex; i++) {
+            humanAge = ages[i] * 15;
+            System.out.printf("|%-12s|%-4d|", names[i], humanAge);
+        }
     }
 
 }
