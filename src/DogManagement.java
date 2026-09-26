@@ -23,13 +23,32 @@ public class DogManagement {
     static int dogDex = 0;
 
     public static void main(String[] args) throws Exception {
+        int selectAct;
+
+        Boolean session = true;
+
         welcome();
-        System.out.println(displayPrompt());
-        newDog();
-        // newDog();
-        printDog(getDog(10));
-        editDog(0);
-        System.out.println(dogDex);
+        while (session) {
+            selectAct = displayPrompt();
+            switch (selectAct) {
+                case 1: // create
+                    newDog();
+                    break;
+                case 2: // print
+                    printDog(getDog());
+                    break;
+                case 3: // update
+                    editDog(getDog());
+                    break;
+                case 4:
+                    session = false;
+                    break;
+
+                default:
+                    System.out.println("Bad option.");
+                    break;
+            }
+        }
 
     }
 
@@ -52,7 +71,7 @@ public class DogManagement {
 
         System.out.print("Enter selection here --> ");
         // INPUT
-        menuOption = Integer.parseInt(scn.nextLine());
+        menuOption = scn.nextInt(); // also changed it here because it gave an error
 
         return menuOption;
     }
@@ -100,11 +119,13 @@ public class DogManagement {
     }
 
     // method to find the index of a dog with a certain ID
-    public static int getDog(int id) {
+    public static int getDog() {
+        System.out.println("Input dog ID: ");
+        int i = scn.nextInt();
         int index = -1;
         for (int validID : ids) {
             index++;
-            if (validID == id) {
+            if (validID == i) {
                 return index;
             }
 
@@ -113,6 +134,7 @@ public class DogManagement {
         return -1; // don't forget to handle this!!
     }
 
+    // method to print out the values of dog from id
     public static void printDog(int i) {
         System.out.printf("|%-4s|%-12s|%-7s|%-4s|%n", "ID", "Name", "Weight", "Age");
         System.out.printf("|%-4d|%-12s|%-7.2f|%-4d|%n", ids[i], names[i], weights[i], ages[i]);
