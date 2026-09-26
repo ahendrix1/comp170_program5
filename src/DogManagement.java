@@ -26,6 +26,7 @@ public class DogManagement {
         newDog();
         // newDog();
         printDog(getDog(10));
+        editDog(0);
 
     }
 
@@ -106,19 +107,56 @@ public class DogManagement {
 
         }
 
-        return -1;
-
+        return -1; // don't forget to handle this!!
     }
 
     public static void printDog(int i) {
-        System.out.printf("|%-4d|%-12s|%-5.2f|%-3d|%n", ids[i], names[i], weights[i], ages[i]);
-
+        System.out.printf("|%-4s|%-12s|%-7s|%-4s|%n", "ID", "Name", "Weight", "Age");
+        System.out.printf("|%-4d|%-12s|%-7.2f|%-4d|%n", ids[i], names[i], weights[i], ages[i]);
     }
 
-    public static int editDog(int index) {
+    public static void editDog(int i) {
+        int selectedField;
+        String newValue;
 
-        return 0;
+        System.out.println("Selected dog:");
+        printDog(i);
 
+        // copied from provided code
+        System.out.println("\nSelect a field to update:");
+        System.out.println("\t1) ID");
+        System.out.println("\t2) Name");
+        System.out.println("\t3) Weight");
+        System.out.println("\t4) Age");
+
+        System.out.print("Enter selection here --> ");
+
+        // except this part which threw an error
+        selectedField = scn.nextInt();
+
+        System.out.println("New value: ");
+        newValue = scn.next();
+
+        switch (selectedField) {
+            case 1:
+                ids[i] = Integer.parseInt(newValue);
+                break;
+            case 2:
+                names[i] = newValue;
+                break;
+            case 3:
+                weights[i] = Double.parseDouble(newValue);
+                break;
+            case 4:
+                ages[i] = Integer.parseInt(newValue);
+                break;
+
+            default:
+                System.out.println("Sorry. Bad field.");
+                break;
+        }
+
+        printDog(i);
     }
 
 }
