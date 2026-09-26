@@ -12,15 +12,11 @@ public class DogManagement {
     /*
      * Global Declaration for parallel arrays and Scanner Object
      */
-    // DECLARING PARALEL ARRAYS OUTSIDE OF MAIN METHOD TO HOLD DOG DATA use the
-    // static keyword
-    //
     static int[] ids = new int[12];
     static String[] names = new String[12];
     static Double[] weights = new Double[12];
     static int[] ages = new int[12];
 
-    // DECLARING SCANNER OBJECT
     static Scanner scn = new Scanner(System.in);
 
     // Global how many dog counter
@@ -28,6 +24,8 @@ public class DogManagement {
 
     public static void main(String[] args) throws Exception {
         newDog();
+        // newDog();
+        printDog(getDog(10));
 
     }
 
@@ -55,7 +53,9 @@ public class DogManagement {
         return menuOption;
     }
 
+    // method to add new dog to arrays
     public static void newDog() {
+        // create local variables
         int i = 0;
         int id = 0;
         String n = "null";
@@ -63,6 +63,8 @@ public class DogManagement {
         int a = 0;
 
         while (i < 5) {
+            // check for which iteration of loop we're on, takes in appropriate info or sets
+            // info
             switch (i) {
                 case 0:
                     System.out.println("Please input id: ");
@@ -93,13 +95,23 @@ public class DogManagement {
         dogDex++;
     }
 
+    // method to find the index of a dog with a certain ID
     public static int getDog(int id) {
+        int index = -1;
+        for (int validID : ids) {
+            index++;
+            if (validID == id) {
+                return index;
+            }
 
-        return 0;
+        }
+
+        return -1;
 
     }
 
-    public static void printDog(int index) {
+    public static void printDog(int i) {
+        System.out.printf("|%-4d|%-12s|%-5.2f|%-3d|%n", ids[i], names[i], weights[i], ages[i]);
 
     }
 
