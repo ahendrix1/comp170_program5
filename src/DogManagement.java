@@ -24,6 +24,7 @@ public class DogManagement {
 
     public static void main(String[] args) throws Exception {
         int selectAct;
+        int selectDog;
 
         Boolean session = true;
 
@@ -35,10 +36,20 @@ public class DogManagement {
                     newDog();
                     break;
                 case 2: // print
-                    printDog(getDog());
+                    selectDog = getDog();
+                    if (selectDog != -1) {
+                        printDog(selectDog);
+                    } else {
+                        System.out.println("Bad dog.");
+                    }
                     break;
                 case 3: // update
-                    editDog(getDog());
+                    selectDog = getDog();
+                    if (selectDog != -1) {
+                        editDog(selectDog);
+                    } else {
+                        System.out.println("Bad dog.");
+                    }
                     break;
                 case 4:
                     session = false;
@@ -124,18 +135,20 @@ public class DogManagement {
 
     // method to find the index of a dog with a certain ID
     public static int getDog() {
-        System.out.println("Input dog ID: ");
-        int i = scn.nextInt();
+        int i;
         int index = -1;
+
+        System.out.println("Input dog ID: ");
+        i = scn.nextInt();
+
         for (int validID : ids) {
             index++;
             if (validID == i) {
                 return index;
             }
-
         }
 
-        return -1; // don't forget to handle this!!
+        return -1;
     }
 
     // method to print out the values of dog from id
