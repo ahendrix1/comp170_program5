@@ -23,10 +23,13 @@ public class DogManagement {
     static int dogDex = 0;
 
     public static void main(String[] args) throws Exception {
+        welcome();
+        System.out.println(displayPrompt());
         newDog();
         // newDog();
         printDog(getDog(10));
         editDog(0);
+        System.out.println(dogDex);
 
     }
 
@@ -68,19 +71,19 @@ public class DogManagement {
             // info
             switch (i) {
                 case 0:
-                    System.out.println("Please input id: ");
+                    System.out.print("Please input id: ");
                     id = scn.nextInt();
                     break;
                 case 1:
-                    System.out.println("Please input name: ");
+                    System.out.print("Please input name: ");
                     n = scn.next();
                     break;
                 case 2:
-                    System.out.println("Please input weight: ");
+                    System.out.print("Please input weight: ");
                     w = scn.nextDouble();
                     break;
                 case 3:
-                    System.out.println("Please input age: ");
+                    System.out.print("Please input age: ");
                     a = scn.nextInt();
                     break;
 
